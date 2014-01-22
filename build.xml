@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project name="stock2" basedir="." default="usage">
+	<!-- Global Variables -->
+	<property name="war.name" value="stock2.war" />
+	<property name="webroot.dir" value="WebRoot" />
+	<property name="classes.dir" value="${webroot.dir}/WEB-INF/classes" />
+	<property name="src.dir" value="src/java" />
+	<property name="config.dir" value="src/config" />
+	<property name="lib.dir" value="${webroot.dir}/WEB-INF/lib" />
+
+	<!-- target -->
+	<target name="usage">
+		<echo message="Available targets are:" />
+		<echo message="" />
+		<echo message="war      --> Build the web application archive" />
+		<echo message="" />
+	</target> 
+
+	<target name="war" depends="compile" description="Build the web application archive">
+		<copy todir="${classes.dir}" failonerror="true">
+		    <fileset dir="${config.dir}">
+		      <include name="**/*"/>
+		    </fileset>
+		</copy>
+      	<jar jarfile="${war.name}" >
+      	    <fileset dir="${webroot.dir}">
+      	      <include name="**/*"/>
+      	    </fileset>
+      	</jar>
+		 
+		<move todir="build">  
+          <fileset dir="./">  
+		  	<filename name="${war.name}"/>
+		   </fileset>
+        </move> 
+	</target>
+
+	<target name="compile" description="compile classess">
+		<echo message="start to complie java sources"/>
+		<mkdir dir="${classes.dir}" />
+		<javac destdir="${classes.dir}"
+		      verbose="${javac.verbose}"
+		      source="1.7"
+		      srcdir="${src.dir}"
+		      >
+		    <classpath>
+              	<fileset dir="${lib.dir}">
+              	   <include name="**/*.jar"/>
+              	</fileset>
+		    </classpath>
+		  </javac>
+		<echo message="complie java sources finished!"/>
+	</target>
+</project>

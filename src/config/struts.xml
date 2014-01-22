@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.action.extension" value="do,action" />
+	<constant name="struts.custom.i18n.resources" value="GlobalMessages" />
+    <!-- url like action!method.action can be invoked if set it true.  
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	-->
+	<package name="base" extends="struts-default">
+	    <interceptors>
+			<interceptor name="loginInterceptor"
+				class="com.forusoft.framework.ui.interceptor.LoginInterceptor" />
+
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<global-results>
+          <result name="json_result">/pages/common/json.jsp</result>
+          <result name="login">/pages/login.jsp</result>
+        </global-results>
+        
+        <!-- index -->
+    	<action name="login" class="com.forusoft.framework.ui.action.LoginAction">
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<result name="success">/pages/login-success.jsp</result>
+        	<result name="input">/pages/login.jsp</result>
+        </action>
+	</package>
+	
+	<include file="struts/struts-stock.xml"/>
+</struts>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2010 2:35:00 PM by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping package="com.forusoft.stock.dal.po">
+    <class name="StockMonthExchangePo" table="TB_STOCK_MONTH_EXCHANGE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="code" type="java.lang.String">
+            <column name="CODE" />
+        </property>
+        <property name="lastPrice" type="java.lang.Double">
+            <column name="LAST_PRICE" />
+        </property>
+        <property name="openPrice" type="java.lang.Double">
+            <column name="OPEN_PRICE" />
+        </property>
+        <property name="closedPrice" type="java.lang.Double">
+            <column name="CLOSED_PRICE" />
+        </property>
+        <property name="highPrice" type="java.lang.Double">
+            <column name="HIGH_PRICE" />
+        </property>
+        <property name="lowPrice" type="java.lang.Double">
+            <column name="LOW_PRICE" />
+        </property>
+        <property name="increase" type="java.lang.Double">
+            <column name="INCREASE" />
+        </property> 
+        <property name="increasePrice" type="java.lang.Double">
+            <column name="INCREASE_PRICE" />
+        </property>
+        <property name="volume" type="int">
+            <column name="VOLUME" />
+        </property> 
+        <property name="exchangeDate" type="java.util.Date">
+            <column name="EXCHANGE_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2010 2:35:00 PM by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping package="com.forusoft.stock.dal.po">
+    <class name="StockPo" table="TB_STOCK" >
+        <id name="code" type="java.lang.String">
+            <column name="CODE" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="shortName" type="java.lang.String">
+            <column name="SHORT_NAME"/>
+        </property>
+        <property name="marketedDate" type="java.util.Date">
+            <column name="MARKETED_DATE" />
+        </property>
+        <property name="delistedDate" type="java.util.Date">
+            <column name="DELISTED_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>
